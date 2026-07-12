@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedWest Hospital — Rachunek</title>
+  <script src="assets/js/vendor/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">
+    <img src="assets/img/logo.png" alt="MedWest Logo" width="58" height="58" onerror="this.hidden=true;this.parentElement.classList.add('logo-fallback')">
+</div>
+        <div>
+          <h1>Rachunek</h1>
+          <p>Dokument usług medycznych</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Powrót</a>
+        <button class="primary-btn" onclick="copyElementAsImage('#invoiceCapture', this)">Kopiuj obraz</button>
+      </nav>
+    </header>
+
+    <section class="document-wrap">
+      <div id="invoiceCapture" class="document">
+        <div id="invoiceDoc">
+          <div class="doc-head">
+            <div>
+              <h2>Medical Services Invoice</h2>
+              <p style="margin:6px 0 0">MedWest Hospital</p>
+              <p style="color:#657386;margin:8px 0 0">REF: <span id="docRef"></span></p>
+            </div>
+            <div class="doc-logo">MW</div>
+          </div>
+
+          <p><strong>DATA:</strong> <span id="docDate"></span><br><strong>PACJENT:</strong> <span id="docPatient"></span><br><strong>LEKARZ:</strong> <span id="docDoctor"></span></p>
+          <p><strong>UBEZPIECZENIE:</strong> <span id="docInsurance"></span><br><strong>NUMER POLISY:</strong> <span id="docPolicy"></span></p>
+
+          <table class="doc-table">
+            <thead><tr><th>Opis usługi</th><th style="text-align:center">Ilość</th><th style="text-align:right">Koszt</th></tr></thead>
+            <tbody id="docItems"></tbody>
+          </table>
+
+          <p style="text-align:right;margin:0">Wartość usług: <strong id="docSubtotal"></strong></p>
+          <p style="text-align:right;color:#198754;margin:6px 0">Pokrycie ubezpieczenia: <strong id="docDiscount"></strong></p>
+          <div class="doc-total">DO ZAPŁATY: <span id="docTotal"></span></div>
+
+          <div style="margin-top:38px;display:flex;justify-content:space-between;gap:20px;align-items:flex-end">
+            <div><small>STATUS: ZATWIERDZONO</small><br><small>LOKALIZACJA: MedWest Hospital</small></div>
+            <div style="text-align:right"><small>PODPIS LEKARZA:</small><br><strong id="docDoctor2" style="border-bottom:1px solid #111;min-width:190px;display:inline-block"></strong></div>
+          </div>
+          <p style="border-top:1px dashed #9aa6b2;padding-top:12px;margin-top:30px;font-size:.78rem;color:#667085">Dokument wygenerowany przez MedWest Hospital Management System.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/invoice.js"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const a=document.getElementById('docDoctor'),b=document.getElementById('docDoctor2'); if(a&&b)b.textContent=a.textContent},50)})</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedWest Hospital — Taryfikator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">
+    <img src="assets/img/logo.png" alt="MedWest Logo" width="58" height="58" onerror="this.hidden=true;this.parentElement.classList.add('logo-fallback')">
+</div>
+        <div>
+          <h1>Taryfikator MedWest</h1>
+          <p>Central Billing System</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="centrum.html">Centrum</a>
+        <a href="recepta.html">Recepty</a>
+        <button class="ghost-btn" onclick="openAdmin()">Admin ceny</button>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <h2>Informacje o zgłoszeniu</h2>
+          <p>Dane zostaną umieszczone na wygenerowanym rachunku.</p>
+        </div>
+        <div id="clock" style="color:var(--muted)"></div>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label>Pacjent</label><input id="patientName" placeholder="Imię i nazwisko"></div>
+        <div class="field"><label>Podpis lekarza</label><input id="doctorName" placeholder="Stopień / imię"></div>
+        <div class="field"><label>Typ ubezpieczenia</label><select id="insuranceType" oninput="calculate()"><option data-rate="0" value="none">Brak ubezpieczenia</option><option data-rate="0.40" value="basic">Podstawowe — 40%</option><option data-rate="0.60" value="extended">Rozszerzone — 60%</option><option data-rate="0.80" value="advanced">Zaawansowane — 80%</option></select></div>
+        <div class="field"><label>Numer polisy</label><input id="policyNumber" placeholder="MW-00000"></div>
+      </div>
+    </section>
+
+    <section id="adminPanel" class="panel admin-panel">
+      <div class="panel-title">
+        <div>
+          <h2>Panel zarządzania cenami</h2>
+          <p>Zmiany zapisują się w pamięci przeglądarki.</p>
+        </div>
+        <button class="danger-btn" onclick="resetPrices()">Reset cen</button>
+      </div>
+      <div id="adminGrid" class="admin-grid"></div>
+      <button class="primary-btn" style="margin-top:14px" onclick="savePrices()">Zapisz ceny</button>
+    </section>
+
+    <section class="tools">
+      <div class="panel">
+        <div class="panel-title">
+          <div>
+            <h2>Usługi medyczne</h2>
+            <p>Wybierz pozycje albo wpisz ilość. Wyszukiwarka pomaga szybko znaleźć lek, badanie lub zabieg.</p>
+          </div>
+        </div>
+        <input id="serviceSearch" placeholder="Szukaj usługi, leku albo badania..." style="margin-bottom:14px">
+        <div id="categoryList" class="category-list"></div>
+      </div>
+
+      <aside class="panel summary-box">
+        <h2 style="margin:0">Podsumowanie</h2>
+        <div class="summary-total" id="final">$0.00</div>
+        <div class="summary-row"><span>Wybrane pozycje</span><strong id="selectedCount">0</strong></div>
+        <div class="summary-row"><span>Wartość usług</span><strong id="subtotal">$0.00</strong></div>
+        <div class="summary-row"><span>Pokrycie ubezpieczenia</span><strong id="discount">-$0.00</strong></div>
+        <div id="selectedList" class="selected-list"></div>
+        <button class="primary-btn" style="width:100%" onclick="generateInvoice()">Generuj rachunek</button>
+      </aside>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/services-data.js"></script>
+  <script src="assets/js/billing.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedWest Hospital — Centrum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <div class="brand">
+          <div class="logo">
+    <img src="assets/img/logo.png" alt="MedWest Logo" width="58" height="58" onerror="this.hidden=true;this.parentElement.classList.add('logo-fallback')">
+</div>
+          <div>
+            <h1>MedWest Hospital</h1>
+            <p>Centralny panel dokumentacji medycznej</p>
+          </div>
+        </div>
+
+        <div class="eyebrow" style="margin-top:34px">Management System</div>
+        <h2>Centrum operacyjne EMS</h2>
+        <p>Profesjonalny system do obsługi roleplay medycznego: taryfikator, recepty, rachunki oraz gotowe dokumenty do skopiowania jako obraz.</p>
+
+        <div class="hero-actions">
+          <a class="primary-btn" href="index.html">Otwórz taryfikator</a>
+          <a class="ghost-btn" href="recepta.html">Wystaw receptę</a>
+        </div>
+      </div>
+
+      <aside class="status-card">
+        <div class="status-pill">System online</div>
+        <div id="clock" style="margin-top:12px;color:var(--muted)"></div>
+        <div class="stats">
+          <div class="stat"><strong>v3.0</strong><span>wersja systemu</span></div>
+          <div class="stat"><strong>82</strong><span>pozycje usług</span></div>
+          <div class="stat"><strong>Local</strong><span>zapis danych</span></div>
+        </div>
+        <p class="subtle-note" style="margin:16px 0 0">Dane są zapisywane lokalnie w przeglądarce. System nie wymaga backendu.</p>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <a class="menu-card" href="index.html">
+        <div class="icon">01</div>
+        <h3>Taryfikator</h3>
+        <p>Kalkulator kosztów usług, ubezpieczenie, lista pozycji oraz generowanie rachunku.</p>
+      </a>
+      <a class="menu-card" href="recepta.html">
+        <div class="icon">02</div>
+        <h3>Recepty</h3>
+        <p>Formularz recepty, gotowe zalecenia i przejrzysty dokument do skopiowania.</p>
+      </a>
+      <a class="menu-card" href="rachunek.html">
+        <div class="icon">03</div>
+        <h3>Ostatni rachunek</h3>
+        <p>Podgląd ostatnio wygenerowanego rachunku zapisanego lokalnie.</p>
+      </a>
+    </section>
+
+    <p class="subtle-note" style="text-align:center;margin-top:26px">MedWest Hospital Management System</p>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="assets/js/common.js"></script>
+</body>
+</html>
